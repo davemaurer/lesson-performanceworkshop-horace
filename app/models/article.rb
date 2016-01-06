@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   end
 
   def tag_list
-     tags.collect{|t| t.name}.join(", ")
+    tags.collect{|t| t.name}.join(", ")
   end
 
   def tag_list=(input)
@@ -59,7 +59,9 @@ class Article < ActiveRecord::Base
   end
 
   def self.total_word_count
-    all.inject(0) {|total, a| total += a.word_count }
+    Rails.cache.fetch("article-total-word-count") do
+      all.inject(0) {|total, a| total += a.word_count }
+    end
   end
 
   def self.generate_samples(quantity = 1000)
