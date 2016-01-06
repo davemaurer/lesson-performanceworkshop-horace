@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'newrelic_rpm'
 gem 'redis-rails'
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
   gem 'spring'

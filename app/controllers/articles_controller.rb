@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles, @tag = Article.search_by_tag_name(params[:tag])
+    @articles, @tag = Article.search_by_tag_name(params[:tag], params[:page])
   end
 
   def new
