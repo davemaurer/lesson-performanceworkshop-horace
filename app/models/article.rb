@@ -42,7 +42,7 @@ class Article < ActiveRecord::Base
   def self.search_by_tag_name(tag_name, page = 1)
     # page = page || 1
     if tag_name.blank?
-      [Article.includes(:comments).paginate(page: page, per_page: 10), nil]
+      [Article.includes(:comments, :tags).paginate(page: page, per_page: 10), nil]
       # [Article.all.limit(10).offset((page -1) * 10), nil]
     else
       tag = Tag.find_by_name(tag_name)
